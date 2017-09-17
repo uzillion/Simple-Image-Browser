@@ -1,4 +1,8 @@
 # Simple Image Browser using PyQt5
+### Install PyQt5 (Required):
+-> If using pip: `pip3 install pyqt5` <br>
+-> If using apt: `sudo apt-get install python3-pyqt5`
+
 ### TO RUN PROGRAM: 
 -> Place images in ./data folder <br>
 -> In your terminal/command prompt go to where the file in saved <br>
