@@ -13,27 +13,17 @@ Operational Keys are:
 [Click] on picture to expand in fill window mode
 
 """
-
-import sys, os
-from PyQt5.QtWidgets import QApplication, QWidget, QLabel, QHBoxLayout
-from PyQt5.QtGui import QPixmap
-from PyQt5.QtCore import *
-from controller import *
-from images import *
+#
+import sys
+from PyQt5.QtWidgets import QApplication
 from view import *
 
 
-class Window(QWidget):
+class Window(View):
 
     def __init__(self):
         super().__init__()
-        self.view = View()
-        self.images = Images().images
-        self.events = Controller()
-        self.views = View()
         self.app = app
-        self.title = 'Image Browser'
-        self.views.initUI()
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
