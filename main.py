@@ -22,7 +22,7 @@ from view import *
 class Window(View):
 
     def __init__(self):
-        super().__init__()
+        super().__init__(sys.argv[1])
         self.app = app
 
 if __name__ == '__main__':
