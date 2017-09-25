@@ -15,5 +15,5 @@ Press '<' for viewing previous 5 pictures <br>
 Press [Up arrow key] for viewing in fill window mode <br>
 Press [Down arrow key] for viewing in thumbnail mode <br>
 Press [Left and right arrow keys] for viewing traveling between pictures <br>
-Press 'Esc' or click on picture to return focus to image-browser
+Press 'Esc' or click on picture to return focus to image-browser <br>
 [Click] on picture to expand image in fill window mode
