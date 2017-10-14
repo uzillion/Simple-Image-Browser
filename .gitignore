@@ -3,8 +3,12 @@ __pycache__/
 *.py[cod]
 *$py.class
 
+<<<<<<< HEAD
 README.md
 
+=======
+data/
+>>>>>>> master
 *.json
 
 # C extensions
