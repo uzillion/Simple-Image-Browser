@@ -5,8 +5,9 @@
 TO RUN PROGRAM: 
 -> Place images in ./data folder
 -> In your terminal/command prompt go to where the file in saved
--> If on Windows Command Prompt, type: "image-browser.py"
--> If on Unix/Linux terminal, type: "python3 image-browser.py"
+-> If on Windows Command Prompt, type "main.py [width]"
+-> If on Unix/Linux terminal, type: "python3 main.py [width]"
+-> You can also specify width as a parameter 
 
 HOW TO USE IMAGE BROWSER:
 Press '>' for viewing next 5 pictures

@@ -24,13 +24,14 @@ class Window(View):
 
     def __init__(self):
         if len(sys.argv) != 2:      # If width is not specified
-            print("ERROR: Please specify width of Window in this format:")
-            print("pyhton3 main.py [Width]")
-            sys.exit(0)
-        if int(sys.argv[1]) not in range(600, 1201):    # If width is not in range
-            print("Only width between 600 to 1200 pixels allowed")
-            sys.exit(0)
-        super().__init__(sys.argv[1])      # Sending width of window
+            super().__init__(800)      # Sending width of window
+            print("You can also specify width of Window in this format:")
+            print("-> main.py [Width]")
+        else:
+            super().__init__(sys.argv[1])      # Sending width of window
+            if int(sys.argv[1]) not in range(600, 1201):    # If width is not in range
+                print("Only width between 600 to 1200 pixels allowed")
+                sys.exit(0)
         self.app = app
 
 if __name__ == '__main__':

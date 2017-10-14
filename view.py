@@ -163,6 +163,7 @@ class View(QWidget):
                 self.image_index = self.circularTraverse(1, "right")
 
     def shrink(self, index):     # Makes necessary changes to change back to Thumbnail Mode
+        self.sounds.expand_sound.play()
         self.mode = 0       # Upadates mode variable
         self.getWidget(5).hide()    # Hides full screen label
         for i in range(0,5):    # Un-hides thumbnail labels
@@ -191,23 +192,22 @@ class View(QWidget):
             self.tags = {}
 
     def addTag(self):
+        # Add tag if not empty string or spaces
         if not (self.textBox.text().isspace() or self.textBox.text() == ""):
-            image_key = str((self.image_index+self.selected_index)%len(Models.images))
-            if image_key not in self.tags:
+            image_key = str((self.image_index+self.selected_index)%len(Models.images)) # Generating image key for dictionary from unique combination of image_index and selected_index
+            if image_key not in self.tags:      # If no tags exist, create a new list for tags
                 self.tags[image_key] = []
-            self.tags[image_key].append(self.textBox.text())
+            self.tags[image_key].append(self.textBox.text())    # Append to the tags lis of image
             self.textBox.setText("")
-            self.setFocus()
+            self.setFocus()     # Return focus to main window
             self.drawTags()
 
     def saveTags(self):
-        f = open("tags.json", "w+")
-        try:
-            json.dump(self.tags, f)
-        except:
-            print(type(self.tags))
+        f = open("tags.json", "w+")        # Create file if does not exist
+        json.dump(self.tags, f)     # save tags in file
+        print("{} saved".format(self.tags))
         f.close()
-        self.setFocus()
+        self.setFocus()     # Return focus back to window
 
     def getWidget(self, index):     # Gets stored widget from layout in the passed index
         return self.layout.itemAt(index).widget()
