@@ -1,32 +1,40 @@
 """
 File: models.py
 By: Uzair Inamdar
-Last edited: 9/25/2017
+Last edited: 10/16/2017
 
 This file is responsible for loading data and assets for the image-browser
 """
 
 import os
+import shutil
 import requests
 import json
+import urllib.request
 from PyQt5.QtCore import QUrl
 from PyQt5.QtMultimedia import QSoundEffect
 class Models:
 
     def __init__(self, base):
         self.base = base
+        try:
+            os.mkdir('./data')
+        except:
+            pass
+        try:
+            os.mkdir('./cache')
+        except:
+            shutil.rmtree('./cache')
+            os.mkdir('./cache')
         # self.limit = base.rangeBox.text()
         # self.tag = base.searchBox.text()
         # self.tag = self.tag.replace(" ", "%20")
 #======================== Images =======================
-    dbImages = {}
+    dbImages = []
     urlImages = []
-    try:
-        f = open("meta.json","r")
-        dbImages = json.load(f)
-        f.close()
-    except:
-        dbImages = {}
+    for file_ in os.listdir("./data"):
+        if file_.endswith((".jpg", ".jpeg", ".png")):
+            dbImages.append("./data/"+file_)
 
     def searchTag(self, tag):
         self.tag = tag
@@ -44,10 +52,14 @@ class Models:
         req = req + '&tags='+self.tag
         res = requests.get(req).json()
         imageList = res['photos']
+        print('=========================================================')
         for img in imageList['photo']:
             imgPath = "https://farm"+str(img['farm'])+".staticflickr.com/"+str(img['server'])+"/"+str(img['id'])+"_"+str(img['secret'])+".jpg"
             print(imgPath)
-            Models.urlImages.append(imgPath)
+            urllib.request.urlretrieve(imgPath, "./cache/"+str(img['id'])+"_"+str(img['secret'])+".jpg")
+        print('=========================================================')
+        for file_ in os.listdir("./cache"):
+            Models.urlImages.append("./cache/"+file_)
 
 #======================== Sounds =======================
     def initSound(self):

@@ -1,7 +1,7 @@
 """
 File: main.py
 By: Uzair Inamdar
-Last edited: 9/25/2017
+Last edited: 10/16/2017
 
 This is a simple image browser that has thumbnail mode and fill window mode
 Operational Keys are:
